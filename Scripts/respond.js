@@ -106,15 +106,15 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 		},
 		
 		//recurse through request queue, get css text
-		makeRequests	= function(){
-			if( requestQueue.length ){
+		makeRequests = function() {
+			if (requestQueue.length) {
 				var thisRequest = requestQueue.shift();
-				
-				ajax( thisRequest.href, function( styles ){
-					translate( styles, thisRequest.href, thisRequest.media );
-					parsedSheets[ thisRequest.href ] = true;
+
+				ajax(thisRequest.href, function(styles) {
+					translate(styles, thisRequest.href, thisRequest.media);
+					parsedSheets[thisRequest.href] = true;
 					makeRequests();
-				} );
+				});
 			}
 		},
 		
